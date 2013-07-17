@@ -1,0 +1,84 @@
+<head>
+  <meta charset="utf-8">
+  <title>V O O R S P E L</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+  {{> body}}
+</body>
+
+<template name="body">
+  <div id="login">
+    {{loginButtons}}
+  </div>
+
+  <!--{{#if q5}}
+  <div id="currentCoords">
+    X<span class="coord">{{x}}</span> Y<span class="coord">{{y}}</span> Z<span class="coord">{{z}}</span>
+    {{xyz}}
+  </div>
+  {{/if}}-->
+
+  {{#if q4}}
+    <div id="coords">
+      {{#each coord}}
+        <div class="coord">
+          <div class="coords-start">{{time}}</div>
+          {{#each target}}
+          <div class="coords-arrow dir-{{direction}}">
+            <div class="coords-label">
+              <div class="person">{{person}}</div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#isolate}}
+    {{#if inputActive}}
+      {{> inputMessage}}
+    {{/if}}
+  {{/isolate}}
+
+  {{> targetedArea}}
+
+  <div id="stars"></div>
+  <div id="warp">
+    <div class="scene">
+      <div class="wrap">
+        <div class="wall wall-right"></div>
+        <div class="wall wall-left"></div>
+        <div class="wall wall-top"></div>
+        <div class="wall wall-bottom"></div>
+        <div class="wall wall-back"></div>
+      </div>
+      <div class="wrap">
+        <div class="wall wall-right"></div>
+        <div class="wall wall-left"></div>
+        <div class="wall wall-top"></div>
+        <div class="wall wall-bottom"></div>
+        <div class="wall wall-back"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="inputMessage">
+  <div id="input-message">
+    <input type="text" id="input-message" placeholder="6. ENGAGING THRUSTERS. INPUT TARGET MUNICIPALITY.">
+  </div>
+</template>
+
+<template name="targetedArea">
+  <div id="targetedArea">
+    {{#each letter}}
+      {{> letter}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="letter">
+  <div class="letter{{fixed}}" data-index="{{number}}">{{value}}</div>
+</template>
